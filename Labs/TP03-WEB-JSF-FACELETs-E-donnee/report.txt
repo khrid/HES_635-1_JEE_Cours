@@ -1,0 +1,3 @@
+Observe and comment how the Facelet transferForm.xhtml and the managed bean TransferBean.java are exchanging variable values.
+le Facelet accède aux getters de cette manière : #{transferBean.performTransfer}
+
