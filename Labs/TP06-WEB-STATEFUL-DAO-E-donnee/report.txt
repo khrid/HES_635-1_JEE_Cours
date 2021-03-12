@@ -1,0 +1,15 @@
+ What is the impact on the usage of a stateful on the presentation layer ?
+    les pages seront un peu plus lentes à charger.
+
+- Make several transfers and to consult the history. Launch several different browsers
+and tabs (e.g., chrome, internet explorer) to make those tests. What do you observe ?
+    l'historique est propre à la session du navigateur
+        => nouvel onglet = historique commun
+        => navigation privée = historique distinct
+        => autre browser = historique distinct
+
+- What happens if you change your stateful bean to a stateless? Analyze the difference
+in execution.
+    l'historique est vide
+    un stateless bean ne stocke pas l'état des variables (ici notre historique). Son cycle de vie très court
+    fait qu'on initialise le bean, avec un nouvel "history" à chaque appel.
