@@ -3,13 +3,15 @@ package ch.hevs.managedbeans;
 import java.util.ArrayList;
 import java.util.List;
 
-import ch.hevs.bankservice.Bank;
+import ch.hevs.ejb.Bank;
 import ch.hevs.businessobject.Account;
 import ch.hevs.businessobject.Client;
 import ch.hevs.ejb.BankBean;
 
+import javax.annotation.PostConstruct;
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 /**
  * TransferBean.java
@@ -24,15 +26,19 @@ public class TransferBean
     private String sourceClientName;
     private String destinationClientName;
     private String transactionResult;
+    private Bank bank;
+
+    @PostConstruct
+    private void init() throws NamingException {
+		Context iniitialContext = new InitialContext();
+		this.bank = (Bank) iniitialContext.lookup("java:module/BankBean");
+	}
 
     public List<Client> getClientList() throws Exception {
     	
     	try {
-
-    		Context iniitialContext = new InitialContext();
-    		Bank bankLocal = (Bank) iniitialContext.lookup("java:module/BankBean");
     		//Bank bank = new Bank();
-			clientList = bankLocal.getClients();
+			clientList = bank.getClients();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -42,7 +48,7 @@ public class TransferBean
     public List<String> getClientNameList() throws Exception {
     	
     	try {
-    		Bank bank = new Bank();
+    		Bank bank = new BankBean();
 			clientList = bank.getClients();
 			clientNameList = new ArrayList<String>();
 			for (Client client : clientList) {
@@ -81,15 +87,15 @@ public class TransferBean
     public String performTransfer() throws NumberFormatException, Exception {
     	
 		try {
-			Bank bank = new Bank();	
-		
+			//Bank bank = new Bank();
+
 			if (!sourceClientName.equals(destinationClientName)) {
-	
-				// Simple hypothesis: the account debited and credited is 
+
+				// Simple hypothesis: the account debited and credited is
 				// the first of the accounts of an owner
 				Account compteSrc = bank.getClientByName(sourceClientName).getAccounts().get(0);
 				Account compteDest = bank.getClientByName(destinationClientName).getAccounts().get(0);
-	
+
 				// Transfer
 				bank.transfer(compteSrc, compteDest, transactionAmount);
 				this.transactionResult="Success!";

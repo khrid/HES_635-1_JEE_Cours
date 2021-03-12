@@ -52,6 +52,7 @@ public class BankBean implements Bank{
         ClientDAO.modify(c);
     }
 
+    @TransactionAttribute(value = TransactionAttributeType.REQUIRED)
     public void transfer(Account source, Account destination, int amount)
             throws BankException {
         source.debit(amount);
