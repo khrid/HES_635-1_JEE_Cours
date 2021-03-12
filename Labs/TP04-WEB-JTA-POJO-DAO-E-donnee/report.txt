@@ -1,0 +1,18 @@
+Contexte :
+    Utilisation des transactions (JTA / Java Transactions API)
+
+Analyze :
+- The service layer, and in particular the method transfer of the class Bank
+
+    Utilisation de "UserTransaction" disponible dans JTA, ce qui permet de travailler avec une transaction.
+    On pourra ainsi effectuer les actions nécessaires, s'assurer que tout se passe bien, et dans ce cas valider (commit)
+    la transaction. Sinon, on pourra la rollback
+
+- The method saveOrUpdate2 of the class AccountDAO
+
+    Elle sert à tester la gestion des transactions avec JTA. Elle simule une erreur aléatoire, qui va remonter une BankException
+    qui sera interceptée dans la méthode "transfer" de la classe Bank. Dans ce cas, on rollback la transaction
+
+- The class ch.hevs.dao.util.ConnexionManager
+
+    C'est un singleton qui permet de s'assurer qu'une seule connexion à la base de donnée existe.

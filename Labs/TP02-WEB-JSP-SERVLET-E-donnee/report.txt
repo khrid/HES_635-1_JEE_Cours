@@ -1,0 +1,22 @@
+Topic 1: Controller
+- Which files are implementing the presentation logic (i.e., controller)?
+    les fichiers dans le dossier webapp qui utilisent les méthodes du TransferBean
+
+- Presentation logic and system code are unfortunately mixed in the Servlet-JSP duos.
+  Describe what is (1) system code and (2) presentation logic in BankServlet.java
+    la logique de présentation est dans le "request", et le code système est dans les autres lignes
+
+Topic 2: View
+- Which files are implementing the view in Servlet-JSP duos?
+    transferForm.xhtml - showTransferResult.xhtml
+
+- Is there an easy way to reuse components (i.e., drop-down lists, buttons) in the
+views?
+    probablement
+
+- Is there an easy way to create unified templates for all web pages?
+    oui, on peut créer des fichiers dans le dossier templates afin de les réutiliser
+
+- Do you think that it is possible for a web graphic designer who does not understand
+Java code to develop/modify/maintain web pages?
+    oui, les connaissances nécessaires pour implémenter le bean dans le code html sont basiques
