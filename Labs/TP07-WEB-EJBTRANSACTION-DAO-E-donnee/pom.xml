@@ -4,9 +4,9 @@
     <artifactId>TP07-WEB-EJBTRANSACTION-DAO-E</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <dependencies>
 
-        <dependency>
+    <dependencies>
+    <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.1</version>
