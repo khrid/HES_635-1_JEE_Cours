@@ -15,7 +15,7 @@ public class Agency {
     @OneToMany(mappedBy = "agency", cascade = CascadeType.ALL) // One Agency To Many Bankers
             List<Banker> bankers;
     @OneToMany(mappedBy = "agency", cascade = CascadeType.ALL) // One Agency To Many Clients
-            List<Client> clients;
+    List<Client> clients;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_address", nullable = true)
     private Address address;
@@ -68,7 +68,6 @@ public class Agency {
         banker.setAgency(this); // ne pas oublier !!
     }
 
-    // helper methods
     public void addClient(Client client) {
         this.clients.add(client);
         client.setAgency(this); // ne pas oublier !!

@@ -93,6 +93,7 @@ public class Client {
 	public void addExternalAccount(ExternalAccount externalAccount) {
 		this.externalAccounts.add(externalAccount);
 	}
+
 	public void addInternalAccount(InternalAccount internalAccount) {
 		this.internalAccounts.add(internalAccount);
 		internalAccount.addClient(this);

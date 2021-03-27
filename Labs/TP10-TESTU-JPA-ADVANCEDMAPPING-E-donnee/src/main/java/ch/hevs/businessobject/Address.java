@@ -1,35 +1,20 @@
 package ch.hevs.businessobject;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Embeddable;
 
-@Entity
+@Embeddable
 public class Address {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;
 	private String postalCode;
 	private String street;
 	private String city;
 
-	
-	// id
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
 	// postalCode
-	public String getPostalCode() {
+	public String getCodePostal() {
 		return postalCode;
 	}
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
+	public void setCodePostal(String codePostal) {
+		this.postalCode = codePostal;
 	}
 
 	// street
